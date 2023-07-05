@@ -9,6 +9,8 @@ SPI1_Index = 1
 SPI2_Port = 'Port B'
 SPI2_Index = 1
 
+DB="/var/log/cirrus-rrd/power"
+
 def callback(data):
     powerdata = json.loads(data)
     print(powerdata["data"]["payload"]["ports"])
