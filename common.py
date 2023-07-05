@@ -7,3 +7,6 @@ SERVICE = DBusServiceIdentifier(
         message_bus = MESSAGE_BUS
 )
 
+command = '''
+{"data":{"playerId":"00000000-0000-0000-0000-000000000000","topic":"CONTROLLER_COMMAND","payload":{"requestId":"123456789","portId":"","command":"REPORT_STATUS"}}}
+'''
