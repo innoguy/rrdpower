@@ -9,11 +9,6 @@ SPI1_Index = 1
 SPI2_Port = 'Port B'
 SPI2_Index = 1
 
-PortA_V = PortA_I = PortA_PF = 0
-PortB_V = PortB_I = PortB_PF = 0
-SPI1_V = SPI1_I = SPI1_PF = 0
-SPI2_V = SPI2_I = SPI2_PF = 0
-
 def callback(data):
     powerdata = json.loads(data)
     print(powerdata["data"]["payload"]["ports"])
@@ -26,15 +21,23 @@ def callback(data):
         PortB_V = port["rmsVoltage"]
         PortB_I = port["rmsCurrent"]
         PortB_PF = port["powerFactor"]
-    for port in powerdata["data"]["payload"]["spis"]:
-      if (port["portId"] == SPI1_Port and port["id"] == SPI1_Index):
-        SPI1_V  = port["rmsVoltage"]
-        SPI1_I  = port["rmsCurrent"]
-        SPI1_PF = port["powerFactor"]
-      elif (port["portId"] == SPI2_Port and port["id"] == SPI2_Index):
-        SPI2_V  = port["rmsVoltage"]
-        SPI2_I  = port["rmsCurrent"]
-        SPI2_PF = port["powerFactor"]
+    try:
+      for port in powerdata["data"]["payload"]["spis"]:
+        if (port["portId"] == SPI1_Port and port["id"] == SPI1_Index):
+          SPI1_V  = port["rmsVoltage"]
+          SPI1_I  = port["rmsCurrent"]
+          SPI1_PF = port["powerFactor"]
+        elif (port["portId"] == SPI2_Port and port["id"] == SPI2_Index):
+          SPI2_V  = port["rmsVoltage"]
+          SPI2_I  = port["rmsCurrent"]
+          SPI2_PF = port["powerFactor"]
+    except:
+      SPI1_V = 0
+      SPI1_I = 0
+      SPI1_PF = 0
+      SPI2_V = 0
+      SPI2_I = 0
+      SPI2_PF = 0
 
     shell = "rrdtool updatev {}.rrd N:{}:{}:{}:{}:{}:{}:{}:{}:{}:{}:{}:{}".format(
               DB,
