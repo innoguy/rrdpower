@@ -148,15 +148,15 @@ rrdtool graph \
         GPRINT:PortA_V:AVERAGE:"\t%.2lf" \
         COMMENT:"\n" \
     DEF:PortB_V=${DB}.rrd:PortB_V:AVERAGE \
-        LINE1:PortB_V${COLORS[0]}:"PortB_V\t" \
+        LINE1:PortB_V${COLORS[1]}:"PortB_V\t" \
         GPRINT:PortB_V:AVERAGE:"\t%.2lf" \
         COMMENT:"\n" \
     DEF:SPI1_V=${DB}.rrd:SPI1_V:AVERAGE \
-        LINE1:SPI1_V${COLORS[0]}:"SPI1_V\t" \
+        LINE1:SPI1_V${COLORS[2]}:"SPI1_V\t" \
         GPRINT:SPI1_V:AVERAGE:"\t%.2lf" \
         COMMENT:"\n" \
     DEF:SPI2_V=${DB}.rrd:SPI2_V:AVERAGE \
-        LINE1:SPI2_V${COLORS[0]}:"SPI2_V\t" \
+        LINE1:SPI2_V${COLORS[3]}:"SPI2_V\t" \
         GPRINT:SPI2_V:AVERAGE:"\t%.2lf" \
         COMMENT:"\n" \
 
@@ -178,15 +178,15 @@ rrdtool graph \
         GPRINT:PortA_I:AVERAGE:"\t%.2lf" \
         COMMENT:"\n" \
     DEF:PortB_I=${DB}.rrd:PortB_I:AVERAGE \
-        LINE1:PortB_I${COLORS[0]}:"PortB_I\t" \
+        LINE1:PortB_I${COLORS[1]}:"PortB_I\t" \
         GPRINT:PortB_I:AVERAGE:"\t%.2lf" \
         COMMENT:"\n" \
     DEF:SPI1_I=${DB}.rrd:SPI1_I:AVERAGE \
-        LINE1:SPI1_I${COLORS[0]}:"SPI1_I\t" \
+        LINE1:SPI1_I${COLORS[2]}:"SPI1_I\t" \
         GPRINT:SPI1_I:AVERAGE:"\t%.2lf" \
         COMMENT:"\n" \
     DEF:SPI2_I=${DB}.rrd:SPI2_I:AVERAGE \
-        LINE1:SPI2_I${COLORS[0]}:"SPI2_I\t" \
+        LINE1:SPI2_I${COLORS[3]}:"SPI2_I\t" \
         GPRINT:SPI2_I:AVERAGE:"\t%.2lf" \
         COMMENT:"\n" \
 
