@@ -13,7 +13,6 @@ DB="/var/log/cirrus-rrd/power"
 
 def callback(data):
     powerdata = json.loads(data)
-    print(powerdata["data"]["payload"]["ports"])
     for port in powerdata["data"]["payload"]["ports"]:
       if (port["id"]=='Port A'):
         PortA_V = port["rmsVoltage"]
@@ -23,17 +22,17 @@ def callback(data):
         PortB_V = port["rmsVoltage"]
         PortB_I = port["rmsCurrent"]
         PortB_PF = port["powerFactor"]
-    try:
+    if "spis" in powerdata["data"]["payload"]:
       for port in powerdata["data"]["payload"]["spis"]:
-        if (port["portId"] == SPI1_Port and port["id"] == SPI1_Index):
-          SPI1_V  = port["rmsVoltage"]
-          SPI1_I  = port["rmsCurrent"]
+        if (port["portId"]==SPI1_Port and port["id"]==SPI2_Index):
+          SPI1_V = port["rmsVoltage"]
+          SPI1_I = port["rmsCurrent"]
           SPI1_PF = port["powerFactor"]
         elif (port["portId"] == SPI2_Port and port["id"] == SPI2_Index):
-          SPI2_V  = port["rmsVoltage"]
-          SPI2_I  = port["rmsCurrent"]
+          SPI2_V = port["rmsVoltage"]
+          SPI2_I = port["rmsCurrent"]
           SPI2_PF = port["powerFactor"]
-    except:
+    else:
       SPI1_V = 0
       SPI1_I = 0
       SPI1_PF = 0
