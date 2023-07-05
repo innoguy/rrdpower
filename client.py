@@ -9,6 +9,6 @@ if __name__ == "__main__":
     proxy = SERVICE.get_proxy()
     while True:
         proxy.SendServerEvent(command)
-        sleep(30)
+        sleep(3)
 
 
