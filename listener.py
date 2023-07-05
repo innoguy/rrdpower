@@ -1,8 +1,11 @@
 from dasbus.loop import EventLoop
 from dasbus.connection import SystemMessageBus
 from dasbus.identifier import DBusServiceIdentifier
-from common import MESSAGE_BUS, SERVICE
+from common import MESSAGE_BUS, SERVICE, command
 import json
+from os import system
+from time import sleep
+from threading import Thread
 
 SPI1_Port = 'Port A'
 SPI1_Index = '1'
@@ -40,10 +43,17 @@ def callback(data):
       PortB_V, PortB_I, PortB_PF,
       SPI1_V, SPI1_I, SPI1_PF,
       SPI2_V, SPI2_I, SPI2_PF)
-    print(shell)
+    system(shell)
 
+def trigger():
+  triggerproxy = SERVICE.get_proxy()
+  while True:
+    triggerproxy.SendServerEvent(command)
+    sleep(3)
 
 if __name__ == "__main__":
+    new_thread = Thread(target=trigger)
+    new_thread.start()
     proxy = SERVICE.get_proxy()
     proxy.StatusReportOccurred.connect(callback)
     loop = EventLoop()
