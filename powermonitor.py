@@ -58,7 +58,7 @@ def trigger():
   triggerproxy = SERVICE.get_proxy()
   while True:
     triggerproxy.SendServerEvent(command)
-    sleep(3)
+    sleep(300)
 
 if __name__ == "__main__":
     new_thread = Thread(target=trigger)
